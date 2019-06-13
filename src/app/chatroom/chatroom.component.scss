@@ -1,0 +1,100 @@
+.chatroom {
+  margin-left: 200px;
+  padding: 10px 10px 20px;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.chatroom-header {
+  min-height: 49px;
+  border-bottom: 1px solid lightgrey;
+  position: relative;
+  h4 {
+    margin: 0;
+    padding: 10px 0 20px 0;
+    font-weight: bold;
+  }
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+hr {
+  border-top: 1px solid lightgrey;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+  max-height: 88vh;
+  overflow-y: auto;
+  .message {
+    margin: 10px 0;
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: lightgrey;
+  border: 1px solid grey;
+  display: inline-block;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.message-metadata {
+  padding-left: 3px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  vertical-align: top;
+  max-width: 90%;
+  .user-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-right: 2px;
+  }
+  .timestamp {
+    font-size: 0.8em;
+    color: grey;
+  }
+  .text {
+    word-break: break-word;
+  }
+}
+
+.message-input-container {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 96%;
+  padding-right: 15px;
+  input {
+    border-radius: 5px;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    height: 40px;
+    padding: 5px;
+    width: 99%;
+    margin: 0;
+    &:focus {
+      outline: 0;
+      border: 2px solid rgb(128, 128, 128);
+    }
+  }
+  // i {
+  //   // margin-top: 10px;
+  //   color: rgba(128, 128, 128, 0.5);
+  //   font-size: 1.6em;
+  //   &:hover {
+  //     cursor: pointer;
+  //     color: rgb(128, 128, 128);
+  //   }
+  // }
+}

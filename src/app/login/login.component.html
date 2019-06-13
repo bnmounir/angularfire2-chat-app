@@ -1,0 +1,167 @@
+<div class="form-container center-block container">
+  <h3 *ngIf="!isNewUser" class="text-center">Please sign in below</h3>
+  <h3 *ngIf="isNewUser" class="text-center">Please create an account below</h3>
+
+  <!-- login form below -->
+
+  <form
+    *ngIf="!isNewUser"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLoginSubmitButtonClick(loginForm)"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="email" class="center-block">Email: </label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.get('email').hasError('required') &&
+          loginForm.get('email').touched
+        "
+        >email is required</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="center-block">Password: </label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.get('password').hasError('required') &&
+          loginForm.get('password').touched
+        "
+        >password is required</span
+      >
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.get('password').hasError('minLength') &&
+          loginForm.get('password').touched
+        "
+        >password needs to be at least 6 characters!</span
+      >
+    </div>
+    <div class="text-center">
+      <button class="btn btn-success text-center center-block" type="submit">
+        Login
+      </button>
+    </div>
+    <br />
+    <em>
+      don't have an account? Click
+      <span
+        (click)="isNewUser = !isNewUser"
+        style="font-weight: bold; cursor: pointer;"
+      >
+        here
+      </span>
+      to create an account
+    </em>
+  </form>
+
+  <!-- new user form below -->
+
+  <form
+    *ngIf="isNewUser"
+    [formGroup]="createUserForm"
+    (ngSubmit)="onCreateUserSubmitButtonClick(createUserForm)"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="username" class="center-block">Username: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="username"
+        formControlName="username"
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          createUserForm.get('username').hasError('required') &&
+          createUserForm.get('username').touched
+        "
+        >username is required</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="email" class="center-block">Email: </label>
+      <input
+        class="form-control"
+        name="email"
+        id="email"
+        type="email"
+        formControlName="email"
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          createUserForm.get('email').hasError('required') &&
+          createUserForm.get('email').touched
+        "
+        >email is required</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="center-block">Password: </label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          createUserForm.get('password').hasError('required') &&
+          createUserForm.get('password').touched
+        "
+        >password is required</span
+      >
+      <span
+        class="text-danger"
+        *ngIf="
+          createUserForm.get('password').hasError('minLength') &&
+          createUserForm.get('password').touched
+        "
+        >password needs to be at least 6 characters!</span
+      >
+    </div>
+    <div class="text-center">
+      <button class="btn btn-success text-center center-block" type="submit">
+        Create Account
+      </button>
+      <!-- <input type="submit" class="btn btn-success" value="Create" /> -->
+    </div>
+    <br />
+    <em>
+      already have an account? Click
+      <span
+        (click)="isNewUser = !isNewUser"
+        style="font-weight: bolder; cursor: pointer;"
+      >
+        here
+      </span>
+      to login
+    </em>
+  </form>
+</div>

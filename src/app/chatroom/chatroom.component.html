@@ -1,0 +1,33 @@
+<div class="chatroom">
+  <header class="chatroom-header">
+    <h4 class="channel-name">{{ channel?.name }}</h4>
+    <button (click)="logout()" class="logout-button btn btn-secondary btn-sm">
+      Logout
+    </button>
+  </header>
+
+  <ul class="messages">
+    <li *ngFor="let message of messages" class="message">
+      <div class="avatar">
+        <img src="{{ message.avatar }}" alt="avatar" />
+      </div>
+      <div class="message-metadata">
+        <span class="user-name">{{ message.username }}</span>
+        <span class="timestamp">{{ message.timestamp }}</span>
+        <div class="text">
+          {{ message.message }}
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class=" message-input-container">
+    <input
+      type="text"
+      placeholder="Please enter a message"
+      #message
+      (keyup.enter)="onAddMessage(message.value); message.value = ''"
+    />
+    <!-- <i class="far fa-paper-plane"></i> -->
+  </div>
+</div>
